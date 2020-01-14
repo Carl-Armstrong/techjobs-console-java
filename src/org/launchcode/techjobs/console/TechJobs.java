@@ -117,6 +117,7 @@ public class TechJobs {
             System.out.println("location: " + job.get("location"));
             System.out.println("core competency: " + job.get("core competency"));
             System.out.println("*****");
+            System.out.println("");
         }
 
         if (someJobs.isEmpty()) {

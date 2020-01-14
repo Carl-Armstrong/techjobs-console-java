@@ -70,11 +70,13 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
+        value = value.toLowerCase();
+
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
 
-            String aValue = row.get(column);
+            String aValue = row.get(column).toLowerCase();
 
             if (aValue.contains(value)) {
                 jobs.add(row);
@@ -135,13 +137,15 @@ public class JobData {
 
         loadData();
 
+        searchTerm = searchTerm.toLowerCase();
+
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row: allJobs) {
             boolean containsTerm = false;
 
             for (String key: row.keySet()) {        // if at least one column matches, containsTerm is true
-                if (row.get(key).contains(searchTerm)) {
+                if (row.get(key).toLowerCase().contains(searchTerm)) {
                     containsTerm = true;
                 }
             }
@@ -153,5 +157,7 @@ public class JobData {
 
         return jobs;
     }
+
+
 
 }

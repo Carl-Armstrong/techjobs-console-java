@@ -125,4 +125,33 @@ public class JobData {
         }
     }
 
+    /*
+    * returns the results of a search through all columns using the search term
+    *
+    * @param searchTerm  string that will be searched for
+    * @return  list of all jobs including search term
+     */
+    public static ArrayList<HashMap<String, String>> findByValue(String searchTerm) {
+
+        loadData();
+
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for (HashMap<String, String> row: allJobs) {
+            boolean containsTerm = false;
+
+            for (String key: row.keySet()) {        // if at least one column matches, containsTerm is true
+                if (row.get(key).contains(searchTerm)) {
+                    containsTerm = true;
+                }
+            }
+
+            if (containsTerm) {
+                jobs.add(row);                      // only added once after all checks are done
+            }
+        }
+
+        return jobs;
+    }
+
 }
